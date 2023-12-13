@@ -1,12 +1,12 @@
 const uuid = require('uuid/v1');
-const Campaigns = require('../models/campaigns');
+const Campaign = require('../models/campaign');
 
 exports.getAllCampaigns = (req, res, next) => {
-  Campaigns.find().then(
+  Campaign.find().then(
     (campaigns) => {
-      const mappedCampaigns = campaigns.map((campaigns) => {
+      const mappedCampaigns = campaigns.map((campaign) => {
         /*product.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + product.imageUrl;*/
-        return campaigns;
+        return campaign;
       });
       res.status(200).json(mappedCampaigns);
     }
@@ -17,14 +17,14 @@ exports.getAllCampaigns = (req, res, next) => {
   );
 };
 
-exports.getOneCampaigns = (req, res, next) => {
-  Campaigns.findById(req.params.id).then(
-    (campaigns) => {
-      if (!campaigns) {
+exports.getOneCampaign = (req, res, next) => {
+  Campaign.findById(req.params.id).then(
+    (campaign) => {
+      if (!campaign) {
         return res.status(404).send(new Error('Product not found!'));
       }
       /* product.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + product.imageUrl;*/ 
-      res.status(200).json(campaigns);
+      res.status(200).json(campaign);
     }
   ).catch(
     () => {
@@ -57,12 +57,12 @@ exports.orderCampaigns = (req, res, next) => {
     return res.status(400).send(new Error('Bad request!'));
   }
   let queries = [];
-  for (let campaignsId of req.body.campaigns) {
+  for (let campaignId of req.body.campaigns) {
     const queryPromise = new Promise((resolve, reject) => {
-      Campaigns.findById(CampaignsId).then(
+      Campaign.findById(CampaignId).then(
         (campaigns) => {
-          if (!campaigns) {
-            reject('Product not found: ' + campaignsId);
+          if (!campaign) {
+            reject('Product not found: ' + campaignId);
           }
           /* product.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + product.imageUrl;*/
           resolve(campaigns);
