@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const campaignsCtrl = require('../controllers/campaigns');
+const campaignCtrl = require('../controllers/campaign');
 
-router.get('api/campaigns', campaignsCtrl.);
-router.get('/:id', campaignsCtrl.getOneCampaigns);
-router.post('/order', campaignsCtrl.orderCampaigns);
+router.get('/', campaignCtrl.getAllCampaigns);
+router.get('/:id', campaignCtrl.getOneCampaign);
+router.post('/order', campaignCtrl.orderCampaigns);
 
 module.exports = router;
