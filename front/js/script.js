@@ -20,8 +20,8 @@ fetchCampaign()
   qui s'y trouvent
   Cela nous permet ensuite d'injecter les données correspondantes au sein du HTML 
   Pour finir, nous appliquons la méthode .join(), afin de supprimer les apostrophres présentes entre chaque carte produit */
-const displayProduct = async () => {
-  await fetchProduct()
+const displayCampaign = async () => {
+  await fetchCampaign()
   items.innerHTML = pelouseData // tab[prod, prod2, prod3]
     .map(                      //      0       1    2
       (pelouse) =>
