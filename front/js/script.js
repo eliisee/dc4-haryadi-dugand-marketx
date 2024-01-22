@@ -4,7 +4,7 @@ const items = (document.getElementById('items'))
 /* Nous initialisons la fonction fetchProduct, fonction asynchrone servant à récupérer les données présentes 
 dans l'API, puis à les convertir au format Javascript 
   Les données au format Javascript sont ensuite stockées dans la variable meubleData*/
-const fetchCampaign = async () => {
+/* const fetchCampaign = async () => {
   await fetch('http://localhost:3000/api/campaigns')
     .then((response) => response.json())
     .then((response) => { 
@@ -12,7 +12,7 @@ const fetchCampaign = async () => {
       return pelouseData
     })
 }
-fetchCampaign()
+fetchCampaign() */
 
 /*Une fois la fonction fetchProduct exécutée, nous déclarons displayProduct, fonction asynchrone qui attend 
   l'éxecution de fetchProduct avant de s'éxecuter
@@ -20,7 +20,7 @@ fetchCampaign()
   qui s'y trouvent
   Cela nous permet ensuite d'injecter les données correspondantes au sein du HTML 
   Pour finir, nous appliquons la méthode .join(), afin de supprimer les apostrophres présentes entre chaque carte produit */
-const displayCampaign = async () => {
+/* const displayCampaign = async () => {
   await fetchCampaign()
   items.innerHTML = pelouseData // tab[prod, prod2, prod3]
     .map(                      //      0       1    2
@@ -35,4 +35,4 @@ const displayCampaign = async () => {
     )
     .join(' ') 
 }
-displayCampaign()
+displayCampaign() */

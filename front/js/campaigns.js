@@ -3,7 +3,7 @@ const queryString_url_id = window.location.search
 const urlSearchParams = new URLSearchParams(queryString_url_id)
 const _id = urlSearchParams.get('_id')
 
-const promiseProduct = fetch(`http://localhost:3000/api/products/${_id}`)
+//const promiseProduct = fetch(`http://localhost:3000/api/products/${_id}`)
 .then((response) => response.json())
 .then((response) => { 
   meubleData = response
@@ -65,7 +65,7 @@ const promiseProduct = fetch(`http://localhost:3000/api/products/${_id}`)
   
 //Récupérer les données séléctionnées par l'utilisateur afin de les envoyer vers le panier
 //Récupération des données de l'API :
-fetch('http://localhost:3000/api/products')
+//fetch('http://localhost:3000/api/products')
   .then((res) => res.json())
   .then((res) => {
     data = res
@@ -184,7 +184,7 @@ fetch('http://localhost:3000/api/products')
 
 // Recuperation du prix produit dans l'API
 
-const priceFetching = fetch('http://localhost:3000/api/products')
+//const priceFetching = fetch('http://localhost:3000/api/products')
   .then((res) => res.json())
   .then((res) => {
     data = res
