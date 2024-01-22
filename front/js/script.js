@@ -12,7 +12,7 @@ const fetchCampaign = async () => {
       return pelouseData
     })
 }
-fetchCampaign()
+//fetchCampaign()
 
 /*Une fois la fonction fetchProduct exécutée, nous déclarons displayProduct, fonction asynchrone qui attend 
   l'éxecution de fetchProduct avant de s'éxecuter
