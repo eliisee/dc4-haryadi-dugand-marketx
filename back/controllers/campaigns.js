@@ -1,5 +1,5 @@
 const uuid = require('uuid/v1');
-const Campaign = require('../models/campaign');
+const Campaign = require('../models/campaigns');
 
 exports.getAllCampaigns = (req, res, next) => {
   Campaign.find().then(
