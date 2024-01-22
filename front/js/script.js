@@ -12,7 +12,11 @@ dans l'API, puis à les convertir au format Javascript
       return pelouseData
     })
 }
+<<<<<<< HEAD
 fetchCampaign() */
+=======
+//fetchCampaign()
+>>>>>>> 77003253d834e727042ae6c5a72f15924205c94f
 
 /*Une fois la fonction fetchProduct exécutée, nous déclarons displayProduct, fonction asynchrone qui attend 
   l'éxecution de fetchProduct avant de s'éxecuter
