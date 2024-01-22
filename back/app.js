@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-const campaignRoutes = require('./routes/campaign');
+const campaignRoutes = require('./routes/campaigns');
 
 const app = express();
 
