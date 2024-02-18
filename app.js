@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
-const port = 3002; // Modification ici
+const port = 3002; // Assurez-vous que ce port est libre ou modifiez-le selon vos besoins
 
-// Données des campagnes stockées en mémoire
-const campaigns = [
+// Middleware pour parser le corps des requêtes en JSON
+app.use(express.json());
+
+// Données des campagnes stockées en mémoire (exemple de base)
+let campaigns = [
     { id: 1, name: 'Campagne A', description: 'Description A', startDate: '2024-01-01', endDate: '2024-12-31', budget: 10000 },
-    { id: 2, name: 'Campagne B', description: 'Description B', startDate: '2024-02-01', endDate: '2024-08-31', budget: 5000 },
-    { id: 3, name: 'Campagne C', description: 'Description C', startDate: '2024-03-15', endDate: '2024-06-15', budget: 7500 },
-    // Ajoutez d'autres campagnes selon le besoin
+    // D'autres campagnes peuvent être ajoutées ici
 ];
 
 // Route pour récupérer toutes les campagnes
@@ -15,20 +16,26 @@ app.get('/api/campaigns', (req, res) => {
     res.json(campaigns);
 });
 
-// Route pour récupérer une campagne spécifique par son ID
-app.get('/api/campaigns/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const campaign = campaigns.find(c => c.id === id);
-    if (campaign) {
-        res.json(campaign);
-    } else {
-        res.status(404).send('Campaign not found');
-    }
+// Route pour créer une nouvelle campagne
+app.post('/api/campaigns', (req, res) => {
+    const { name, description, startDate, endDate, budget } = req.body;
+    // Créez une nouvelle campagne avec un id unique. Ici, nous utilisons simplement la longueur du tableau + 1 pour simplifier.
+    const newCampaign = {
+        id: campaigns.length + 1,
+        name,
+        description,
+        startDate,
+        endDate,
+        budget,
+    };
+    campaigns.push(newCampaign);
+    res.status(201).send(newCampaign); // Envoie la nouvelle campagne avec le statut 201 (Créé)
 });
 
-// Démarrez le serveur sur le port 3002
+// Démarrage du serveur
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Server listening at http://localhost:${port}`);
 });
+
 
 
