@@ -25,3 +25,11 @@ module.exports = app;
 app.use((req,res) => {
   res.json({ message: 'Votre requete à bein été reçus !'});
 });
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Header',
+  'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTION');
+  next();
+});
