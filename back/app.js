@@ -1,29 +1,29 @@
 const express = require('express');
-const path = require('path');
-
-const campaignRoutes = require('./routes/campaigns');
-
 const app = express();
+const port = 3000;
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-  next();
+// Données des campagnes stockées en mémoire
+const campaigns = [
+    { id: 1, name: 'Campagne A', description: 'Description A', startDate: '2024-01-01', endDate: '2024-12-31', budget: 10000 },
+    // Ajoutez d'autres campagnes selon le besoin
+];
+
+// Route pour récupérer toutes les campagnes
+app.get('/api/campaigns', (req, res) => {
+    res.json(campaigns);
 });
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use(express.static('images'));
-
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-
-app.use('/api/campaigns', campaignRoutes);
-
-module.exports = app;
-
-app.use((req,res) => {
-  res.json({ message: 'Votre requete à bein été reçus !'});
+// Route pour récupérer une campagne spécifique par son ID
+app.get('/api/campaigns/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const campaign = campaigns.find(c => c.id === id);
+    if (campaign) {
+        res.json(campaign);
+    } else {
+        res.status(404).send('Campaign not found');
+    }
 });
 
-
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+});
