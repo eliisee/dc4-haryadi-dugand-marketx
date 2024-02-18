@@ -21,3 +21,7 @@ app.use(express.json());
 app.use('/api/campaigns', campaignRoutes);
 
 module.exports = app;
+
+app.use((req,res) => {
+  res.json({ message: 'Votre requete à bein été reçus !'});
+});
